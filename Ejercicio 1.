@@ -1,0 +1,39 @@
+#include "iostream"
+using namespace std;
+float CR, SR, empleados, total, n, e; //Declaramos la variables a utilizar en todo el programa
+float ISSS=0.04, AFP=0.0625, RENTA=0.10;//Asignamos los valores al porcentaje que equivale cada descuento.
+void funcionSR()//La funcion que se utilizara si el salario el menor a los 500$
+{
+    total=(n*1.75)+(e*2.50);//Este seria el salario total, sin descuentos incluidos
+    SR=total-((total*ISSS)+(total*AFP));//al salario total se le aplica cada uno de sus descuentos para obtener el salario real.
+    cout << "La planilla total a pagar es: $"<< SR*empleados <<" y el salario por empleado es de: $" << SR << endl;//Este seria el resultado que se imprime en pantalla
+}
+void funcionCR()//Esta es la funcion que se utiliza cuando el salario es mayor a 500$ ya que se agrega el 10% de Renta en los descuentos.
+{
+    total=(n*1.75)+(e*2.50);
+    CR=total-((total*ISSS)+(total*AFP)+(total*RENTA));
+    cout << "La planilla total a pagar es: $" << CR*empleados <<" y el salario por empleado es de: $" << CR << endl;
+}
+int main()
+{
+   
+    cout << "Bienvenido" << endl;
+    cout << "Ingrese la cantidad de empleados a los que va a calcular su salario: " << endl;
+    cin >> empleados;//se pide al usuario la cantidad de empleados a los que será calculado el salario.
+    cout << "Ingrese la cantidad de horas normales que han trabajado: " << endl;
+    cin >> n; // se pide al usuario ingresar la cantidad de horas normales trabajadas.
+    cout << "Ingrese la cantidad de horas extras que han trabajado: " << endl;
+    cin >> e;//se pide al usuario ingresar la cantidad de horas extras trabajadas.
+
+    total=(n*1.75)+(e*2.50); 
+
+    if(total>=500.00)
+    {
+        ;funcionCR();//Se llama a la funcion que aplica renta 
+    }
+    if(total<500.00)
+    {
+        ;funcionSR();//Se llama la funcion que no aplica renta
+    }
+    system("pause");
+}
