@@ -1,0 +1,53 @@
+#include "iostream"
+using namespace std;
+#define FALSE 0 //Definimos las constantes que utilizaremos en todo el programa.
+#define TRUE 1
+
+void Adivina()//Esta será la funcion.
+{
+    int adivinar=23, numero, intentos=5, juego=FALSE, continuar; //Las variables que utilizaremos
+
+    while (juego==FALSE && continuar!=0 ){ //el ciclo while que ejecutaremos para que se repita hasta que el numero de intentos termine o el usuario lo quiera
+        cout << "Ingresa el numero que crees que es el correcto: " << endl;
+        cin >> numero;//aqui se pide al usario que ingrese el numero 
+        if(numero==adivinar){ //si el numero que ingresó es igual al determinado, el usario ganó
+            cout << "Adivinaste" << endl;
+            juego=TRUE;//cambiamos la variable juego a TRUE para que la condicion cambie
+        }
+        if(numero<adivinar){//si el numero que ingreso es menor al determinado se dice que aun le falta para llegar al indicado
+            cout << "Aun te falta para llegar" << endl;
+            cout << "Si te rendiste presiona 0 sino, presiona cualquier otro numero" << endl; //se da la opcion si el usuario decide rendirse
+            cin >> continuar;
+            if(continuar==0){juego==TRUE;}//si el usuario ingresa "0" el juego termina, si ingresa cualquier otro numero el juego continúa
+            else{juego==FALSE;}
+        }
+        if(numero>adivinar){ // si el numero que se ingreso es mayor al determinado, se dice que se pasó 
+            cout << "Te pasaste" << endl;
+            cout << "Si te rendiste presiona 0 sino, presiona cualquier otro numero" << endl;//se vuelve a dar la opcion de rendirse
+            cin >> continuar;
+            if(continuar==0){juego==TRUE;}
+            else{juego==FALSE;}
+        }
+        intentos--; //el numero de intentos decrece a medida que el bucle de repite
+        if(intentos>0 && juego==FALSE && continuar!=0){ //la condición para que se ejecute
+            cout << "Te quedan: " << intentos << " intentos" << endl; 
+        }
+        if(intentos==1){ //agregamos para que cuando solo quede una oportunidad se despliegue un mensaje distinto a los anteriores
+            cout << "Te queda solo una oportunidad" << endl;
+        }
+        if(intentos==0){ // se despliega al acabarse las oportunidades
+            cout << "Te quedaste sin oportunidades, el numero era: " << adivinar << endl;
+            juego = TRUE;
+        }
+    
+    } 
+
+}
+
+int main() //nuestra funcion principal
+{
+    int seguir=1, parar=2, opcion; //las variables que utilizaremos 
+    cout << "*====BIENVENIDO====*" << endl;
+    cout << "Adivina el numero entero del 1 al 100" << endl; 
+    ;Adivina();//llamamos a la funcion
+}
