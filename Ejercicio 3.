@@ -1,0 +1,19 @@
+#include "iostream"
+using namespace std;
+int anio;
+void formula() //formula 
+{
+   cout<<"Introduce el a"<<(char)164<<"o: "; //164 es el ascii de la letra ñ
+   cin >> anio;
+  
+   if(anio%400==0 or anio%4==0 and anio%100!=0) //Si lo cumple es bisiesto
+   cout << "Es bisiesto" << endl;
+   else //si no cumple lo anterior
+   cout << "No es bisiesto" << endl;
+}
+
+int main(void)
+{
+  cout << "";formula(); //Se llama la formula y se imprime en pantalla
+  system("pause");
+}
